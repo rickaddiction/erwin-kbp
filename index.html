@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erwin — Golf Residence | Kota Baru Parahyangan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Cinzel:wght@500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0b0c0e;
+    --gold:#c9a45c;
+    --gold-bright:#e8c47e;
+    --line:rgba(201,164,92,0.35);
+    --text:#ece7dd;
+    --text-dim:#bdb6a7;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--black); color:var(--text); font-family:'Jost', sans-serif; font-weight:300; }
+  h1,h2,h3{ font-family:'Cinzel', serif; letter-spacing:0.04em; font-weight:600; color:var(--gold-bright); }
+  a{ color:inherit; text-decoration:none; }
+
+  .eyebrow{
+    display:flex; align-items:center; gap:14px; justify-content:center;
+    font-size:0.78rem; letter-spacing:0.32em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:24px;
+  }
+  .eyebrow .rule{ width:40px; height:1px; background:var(--gold); }
+
+  /* ===== CROP-IMAGE SECTION (shared pattern for all 3 sections) ===== */
+  .crop-section{
+    min-height:100vh;
+    padding:100px 5vw;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .crop-section .crop-img{
+    width:100%;
+    max-width:1300px;
+    height:auto;
+    display:block;
+    border:1px solid var(--line);
+    box-shadow:0 30px 80px rgba(0,0,0,0.55);
+  }
+
+  /* scroll indicator */
+  .scroll-cue{
+    margin-top:46px;
+    font-size:0.68rem; letter-spacing:0.26em; text-transform:uppercase; color:var(--text-dim);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .scroll-cue .line{ width:1px; height:38px; background:linear-gradient(to bottom, var(--gold), transparent); }
+
+  .btn-gold{
+    display:inline-block; margin-top:38px; padding:15px 32px;
+    border:1px solid var(--gold); background:var(--gold); color:var(--black);
+    font-size:0.76rem; letter-spacing:0.18em; text-transform:uppercase; transition:all 0.35s ease;
+  }
+  .btn-gold:hover{ background:transparent; color:var(--gold-bright); }
+
+  footer{ border-top:1px solid var(--line); padding:36px 0; text-align:center; background:var(--black); }
+  footer p{ color:var(--text-dim); font-size:0.74rem; letter-spacing:0.08em; }
+  footer .logo{ margin-bottom:10px; display:inline-block; font-family:'Cinzel', serif; font-size:1rem; letter-spacing:0.16em; color:var(--gold-bright); text-transform:uppercase; }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. PROFIL ============ -->
+<section class="crop-section reveal in" id="profil">
+  <div class="eyebrow"><span class="rule"></span>Profil<span class="rule"></span></div>
+  <img class="crop-img" src="assets/erwin-1.png" alt="Profil — Paramawati House, Golf Residence, Kota Baru Parahyangan">
+
+  <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+</section>
+
+<!-- ============ 2. KATALOG HUNIAN ============ -->
+<section class="crop-section reveal" id="katalog">
+  <div class="eyebrow"><span class="rule"></span>Katalog Hunian<span class="rule"></span></div>
+  <img class="crop-img" src="assets/erwin-2.png" alt="Katalog Tatar Hunian Kota Baru Parahyangan">
+  <a href="https://wa.me/6282188889951" class="btn-gold" target="_blank">Tanya Detail Unit</a>
+</section>
+
+<!-- ============ 3. SIMULASI KPR ============ -->
+<section class="crop-section reveal" id="kpr">
+  <div class="eyebrow"><span class="rule"></span>Simulasi KPR<span class="rule"></span></div>
+  <img class="crop-img" src="assets/erwin-3.png" alt="Simulasi Suku Bunga KPR Bank Rekanan">
+  <a href="https://wa.me/6282188889951" class="btn-gold" target="_blank">Konsultasi KPR</a>
+</section>
+
+<footer>
+  <div class="logo">Erwin</div>
+  <p>RASB · Kota Baru Parahyangan · www.kotabaruparahyangan.com</p>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
